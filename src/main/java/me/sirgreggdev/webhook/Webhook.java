@@ -11,11 +11,11 @@ public class Webhook {
         this.url = url;
     }
 
-    public void sendMessage(String message) {
+    public void sendMessage(JSONObject message) {
         try {
             HttpResponse<String> res = Unirest.post(url)
                     .header("Content-Type", "application/json")
-                    .body(new JSONObject().put("content", message)).asString();
+                    .body(message).asString();
 
             System.out.println(res.getBody());
         } catch (UnirestException e) {
