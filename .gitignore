@@ -88,3 +88,6 @@ hs_err_pid*
 # End of https://www.gitignore.io/api/java,intellij+all
 
 *.iml
+
+# Has important secrets!
+test/
