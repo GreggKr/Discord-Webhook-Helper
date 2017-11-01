@@ -1,6 +1,10 @@
 package me.sirgreggdev.webhook.obj;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.Arrays;
+import java.util.Objects;
 
 // TODO: Rename
 public class WebhookData {
@@ -37,8 +41,24 @@ public class WebhookData {
     }
 
     public JSONObject build() {
+        if (content == null && file == null && embeds == null) return null; // It's required to have at least one of these
+
         JSONObject object = new JSONObject();
-        object.put("content", content);
+        if (content != null) object.put("content", content);
+        if (username != null) object.put("username", username);
+        if (avatarUrl != null) object.put("avatarUrl", avatarUrl);
+        object.put("tts", tts);
+        if (file != null) object.put("file", file);
+
+        JSONArray embedArray = new JSONArray();
+        if (embeds != null) {
+            Arrays.stream(embeds).forEachOrdered(embed -> {
+                JSONObject embedObj = new JSONObject();
+                object.put("", "");
+
+                embedArray.put(embedObj);
+            });
+        }
 
         return object;
     }
