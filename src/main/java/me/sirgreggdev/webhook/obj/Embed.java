@@ -59,17 +59,22 @@ public class Embed {
         return this;
     }
 
+    public Embed setVideo(Video video) {
+        this.video = video;
+        return this;
+    }
+
     public JSONObject build() {
         JSONObject object = new JSONObject();
         if (title != null) object.put("title", title);
         object.put("type", TYPE);
         if (description != null) object.put("description", description);
         if (url != null) object.put("url", url);
-
         if (author != null) object.put("author", author.build());
         if (footer != null) object.put("footer", footer.build());
         if (image != null) object.put("image", image.build());
         if (provider != null) object.put("provider", provider.build());
+        if (video != null) object.put("video", video.build());
         object.put("color", color);
 
         return object;
