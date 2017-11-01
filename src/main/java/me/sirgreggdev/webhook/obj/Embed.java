@@ -32,6 +32,8 @@ public class Embed {
         return this;
     }
 
+    // Not sure what's up with this atm.
+    // TODO: fix
     public Embed setColor(int color) {
         this.color = color;
         return this;
@@ -52,8 +54,12 @@ public class Embed {
         return this;
     }
 
-    public JSONObject build() {
+    public Embed setProvider(Provider provider) {
+        this.provider = provider;
+        return this;
+    }
 
+    public JSONObject build() {
         JSONObject object = new JSONObject();
         if (title != null) object.put("title", title);
         object.put("type", TYPE);
@@ -63,6 +69,8 @@ public class Embed {
         if (author != null) object.put("author", author.build());
         if (footer != null) object.put("footer", footer.build());
         if (image != null) object.put("image", image.build());
+        if (provider != null) object.put("provider", provider.build());
+        object.put("color", color);
 
         return object;
     }
