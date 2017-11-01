@@ -1,6 +1,9 @@
 package me.sirgreggdev.webhook.obj;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.Arrays;
 
 public class Embed {
     private String title;
@@ -69,6 +72,11 @@ public class Embed {
         return this;
     }
 
+    public Embed setFields(Field... fields) {
+        this.fields = fields;
+        return this;
+    }
+
     public JSONObject build() {
         JSONObject object = new JSONObject();
         if (title != null) object.put("title", title);
@@ -81,6 +89,10 @@ public class Embed {
         if (provider != null) object.put("provider", provider.build());
         if (video != null) object.put("video", video.build());
         if (thumbnail != null) object.put("thumbnail", thumbnail.build());
+
+        JSONArray fieldArray = new JSONArray();
+        Arrays.stream(fields).forEachOrdered(field -> fieldArray.put(field.build()));
+        object.put("fields", fieldArray);
 
         object.put("color", color);
 
