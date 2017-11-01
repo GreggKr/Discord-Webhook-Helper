@@ -35,7 +35,7 @@ public class WebhookData {
         return this;
     }
 
-    public WebhookData setEmbeds(Embed[] embeds) {
+    public WebhookData setEmbeds(Embed... embeds) {
         this.embeds = embeds;
         return this;
     }
@@ -52,12 +52,8 @@ public class WebhookData {
 
         JSONArray embedArray = new JSONArray();
         if (embeds != null) {
-            Arrays.stream(embeds).forEachOrdered(embed -> {
-                JSONObject embedObj = new JSONObject();
-                object.put("", "");
-
-                embedArray.put(embedObj);
-            });
+            Arrays.stream(embeds).forEachOrdered(embed -> embedArray.put(embed.build()));
+            object.put("embeds", embedArray);
         }
 
         return object;
