@@ -42,6 +42,11 @@ public class Embed {
         return this;
     }
 
+    public Embed setAuthor(Author author) {
+        this.author = author;
+        return this;
+    }
+
     public JSONObject build() {
         if (description == null) return null;
 
@@ -51,6 +56,7 @@ public class Embed {
         object.put("description", description);
         if (url != null) object.put("url", url);
 
+        if (author != null) object.put("author", author.build());
 
         return object;
     }

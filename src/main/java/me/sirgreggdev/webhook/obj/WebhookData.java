@@ -4,7 +4,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 // TODO: Rename
 public class WebhookData {
