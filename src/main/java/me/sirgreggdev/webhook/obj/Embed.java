@@ -59,6 +59,11 @@ public class Embed {
         return this;
     }
 
+    public Embed setThumbnail(Thumbnail thumbnail) {
+        this.thumbnail = thumbnail;
+        return this;
+    }
+
     public Embed setVideo(Video video) {
         this.video = video;
         return this;
@@ -75,6 +80,8 @@ public class Embed {
         if (image != null) object.put("image", image.build());
         if (provider != null) object.put("provider", provider.build());
         if (video != null) object.put("video", video.build());
+        if (thumbnail != null) object.put("thumbnail", thumbnail.build());
+
         object.put("color", color);
 
         return object;

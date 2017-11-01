@@ -2,6 +2,7 @@ package me.sirgreggdev.webhook.obj;
 
 import org.json.JSONObject;
 
+// TODO: fix
 public class Video {
     private String url;
     private int height;
