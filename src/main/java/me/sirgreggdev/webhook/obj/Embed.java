@@ -57,6 +57,7 @@ public class Embed {
         if (url != null) object.put("url", url);
 
         if (author != null) object.put("author", author.build());
+        if (footer != null) object.put("footer", footer.build());
 
         return object;
     }
