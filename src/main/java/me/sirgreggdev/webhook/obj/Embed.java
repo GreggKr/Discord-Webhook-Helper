@@ -47,17 +47,22 @@ public class Embed {
         return this;
     }
 
+    public Embed setImage(Image image) {
+        this.image = image;
+        return this;
+    }
+
     public JSONObject build() {
-        if (description == null) return null;
 
         JSONObject object = new JSONObject();
         if (title != null) object.put("title", title);
         object.put("type", TYPE);
-        object.put("description", description);
+        if (description != null) object.put("description", description);
         if (url != null) object.put("url", url);
 
         if (author != null) object.put("author", author.build());
         if (footer != null) object.put("footer", footer.build());
+        if (image != null) object.put("image", image.build());
 
         return object;
     }
