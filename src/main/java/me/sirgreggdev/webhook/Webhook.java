@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 public class Webhook {
     private String url;
+
     public Webhook(String url) {
         this.url = url;
     }
@@ -17,7 +18,8 @@ public class Webhook {
                     .header("Content-Type", "application/json")
                     .body(message).asString();
 
-            System.out.println(res.getBody());
+            System.out.println("Sent: " + message);
+            System.out.println("Got: " + res.getBody());
         } catch (UnirestException e) {
             e.printStackTrace();
         }
